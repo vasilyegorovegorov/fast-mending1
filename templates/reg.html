@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6e9ff 100%);
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 8px 32px rgba(100, 100, 255, 0.1);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-header h1 {
+            color: #333;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #555;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            padding-left: 4px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            padding-left: 45px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(100, 100, 255, 0.2);
+            border-radius: 12px;
+            color: #333;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input::placeholder {
+            color: #999;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: rgba(100, 100, 255, 0.5);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(100, 100, 255, 0.1);
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #6e8efb 0%, #7b6eff 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(100, 100, 255, 0.2);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 24px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .register-link a {
+            color: #6e8efb;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 4px;
+            transition: opacity 0.3s ease;
+        }
+
+        .register-link a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 24px;
+            }
+
+            .login-header h1 {
+                font-size: 24px;
+            }
+
+            .input-group input {
+                font-size: 14px;
+                padding: 12px;
+                padding-left: 40px;
+            }
+
+            .submit-button {
+                padding: 12px;
+                font-size: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Регистрация</h1>
+        </div>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Введите ваше имя"
+                        required
+                    >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="profile_title">Название профиля</label>
+                <div class="input-group">
+                    <i class="fas fa-id-card"></i>
+                    <input
+                        type="text"
+                        id="profile_title"
+                        name="profile_title"
+                        placeholder="Введите название профиля"
+                        required
+                    >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Введите пароль"
+                        required
+                    >
+                </div>
+            </div>
+            <button class="submit-button" type="submit">
+                Зарегистрироваться
+            </button>
+        </form>
+        <div class="register-link">
+            Уже есть аккаунт?<a href="/login">Войдите</a>
+        </div>
+    </div>
+</body>
+</html>
