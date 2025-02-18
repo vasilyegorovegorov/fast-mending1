@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гистограмма неисправностей постаматов</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Количество неисправностей постаматов по дням</h1>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script>
+        $(document).ready(function () {
+
+            $.ajax({
+                url: '/generate_rep3',
+                method: 'GET',
+                success: function (data) {
+
+                    const labels = data.map(item => item.date);
+                    const errorCounts = data.map(item => item.error_count);
+
+
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Количество неисправностей',
+                                data: errorCounts,
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error('Ошибка при загрузке данных:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
